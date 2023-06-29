@@ -1,3 +1,4 @@
+import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'dart:ui';
@@ -76,6 +77,7 @@ class _ProductsState extends State<Products> {
                 ),
               ),
               ListTile(
+                leading: Icon(Icons.home),
                 title: const Text(
                   'Home',
                   style: TextStyle(
@@ -83,10 +85,11 @@ class _ProductsState extends State<Products> {
                   ),
                 ),
                 onTap: () {
-                  Navigator.pushNamed(context, '/'); // Handle item 1 click
+                  Navigator.pushNamed(context, '/vista');
                 },
               ),
               ListTile(
+                leading: Icon(Icons.category),
                 title: const Text(
                   'Categorias',
                   style: TextStyle(
@@ -94,10 +97,11 @@ class _ProductsState extends State<Products> {
                   ),
                 ),
                 onTap: () {
-                  Navigator.pushNamed(context, '/venta'); // Handle item 2 click
+                  Navigator.pushNamed(context, '/category');
                 },
               ),
               ListTile(
+                leading: Icon(Icons.shopping_cart),
                 title: const Text(
                   'Productos',
                   style: TextStyle(
@@ -105,11 +109,11 @@ class _ProductsState extends State<Products> {
                   ),
                 ),
                 onTap: () {
-                  Navigator.pushNamed(
-                      context, '/products'); // Handle item 2 click
+                  Navigator.pushNamed(context, '/products');
                 },
               ),
               ListTile(
+                leading: Icon(Icons.inventory),
                 title: const Text(
                   'Inventario',
                   style: TextStyle(
@@ -117,11 +121,23 @@ class _ProductsState extends State<Products> {
                   ),
                 ),
                 onTap: () {
-                  Navigator.pushNamed(
-                      context, '/listproducts'); // Handle item 2 click
+                  Navigator.pushNamed(context, '/listproducts');
                 },
               ),
               ListTile(
+                leading: Icon(Icons.person_add),
+                title: const Text(
+                  'Usuarios',
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.pushNamed(context, '/users');
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.logout),
                 title: const Text(
                   'Cerrar Sesion',
                   style: TextStyle(
@@ -129,7 +145,7 @@ class _ProductsState extends State<Products> {
                   ),
                 ),
                 onTap: () {
-                  // Handle item 2 click
+                  Navigator.pushNamed(context, '/');
                 },
               ),
             ],
@@ -146,7 +162,7 @@ class _ProductsState extends State<Products> {
           children: [
             Container(
               width: double.infinity,
-              height: 766 * fem,
+              height: 600 * fem,
               child: Stack(
                 children: [
                   Positioned(
@@ -155,7 +171,7 @@ class _ProductsState extends State<Products> {
                     child: Align(
                       child: SizedBox(
                         width: 393 * fem,
-                        height: 406 * fem,
+                        height: 350 * fem,
                         child: Container(
                           decoration: BoxDecoration(
                             color: Color(0xff3e54ac),
@@ -165,34 +181,79 @@ class _ProductsState extends State<Products> {
                     ),
                   ),
                   Positioned(
-                    left: 132 * fem,
-                    top: 148 * fem,
+                    left: 120 * fem,
+                    top: 100 * fem,
                     child: Align(
-                      child: SizedBox(
-                        width: 163 * fem,
-                        height: 163 * fem,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20 * fem),
-                            border: Border.all(color: Color(0xff3e54ac)),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0x3f000000),
-                                offset: Offset(0 * fem, 4 * fem),
-                              )
-                            ],
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            width: 163 * fem,
+                            height: 163 * fem,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20 * fem),
+                                border: Border.all(color: Color(0xff3e54ac)),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Color(0x3f000000),
+                                    offset: Offset(0 * fem, 4 * fem),
+                                    blurRadius: 6 * fem,
+                                  ),
+                                ],
+                              ),
+                              child: Image.asset(
+                                'images/vector-mVv.png',
+                                fit: BoxFit.contain,
+                              ),
+                            ),
                           ),
-                          child: Image.asset(
-                            'images/vector-mVv.png',
-                            fit: BoxFit.contain,
+                          SizedBox(
+                              height: 16 *
+                                  fem), // Espacio entre la imagen y el contenedor del código de barras
+                          GestureDetector(
+                            onTap: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title:
+                                        Text('Escanea el código del producto'),
+                                    actions: [
+                                      TextButton(
+                                        child: Text('Aceptar'),
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10 * fem),
+                                border: Border.all(color: Colors.grey),
+                              ),
+                              child: BarcodeWidget(
+                                barcode: Barcode
+                                    .code128(), // Selecciona el tipo de código de barras que desees
+                                data:
+                                    '1234567890', // El valor del código de barras
+                                width: 150 * fem,
+                                height: 50 * fem,
+                                drawText:
+                                    false, // Si deseas mostrar el texto debajo del código de barras
+                              ),
+                            ),
                           ),
-                        ),
+                        ],
                       ),
                     ),
                   ),
                   Positioned(
                     left: 0 * fem,
-                    top: 406 * fem,
+                    top: 350 * fem,
                     child: Align(
                       child: SizedBox(
                         width: 393 * fem,
@@ -204,14 +265,17 @@ class _ProductsState extends State<Products> {
                               topLeft: Radius.circular(40 * fem),
                               topRight: Radius.circular(40 * fem),
                             ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0x3f000000),
+                                offset: Offset(0 * fem, -4 * fem),
+                                blurRadius: 6 *
+                                    fem, // Añadir blurRadius para sombra más visible
+                              ),
+                            ],
                           ),
                           child: Padding(
-                            padding: EdgeInsets.only(
-                              left: 25 * fem,
-                              right: 25 * fem,
-                              top: 45 * fem,
-                              bottom: 20 * fem,
-                            ),
+                            padding: EdgeInsets.all(25 * fem),
                             child: SingleChildScrollView(
                               child: Column(
                                 children: [
@@ -242,8 +306,16 @@ class _ProductsState extends State<Products> {
                                   SizedBox(height: 20 * fem),
                                   ElevatedButton(
                                     onPressed: () {
-                                      // Handle button press
+                                      Navigator.pushNamed(context, '/venta');
                                     },
+                                    style: ElevatedButton.styleFrom(
+                                      primary: Color(0xff3e54ac),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(20 * fem),
+                                      ),
+                                      minimumSize: Size(100 * fem, 50 * fem),
+                                    ),
                                     child: Text(
                                       'Agregar al carrito',
                                       style: TextStyle(

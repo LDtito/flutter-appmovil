@@ -134,11 +134,43 @@ class _VentaState extends State<Venta> {
       ),
       bottomNavigationBar: Container(
         padding: EdgeInsets.all(16),
-        child: Text(
-          'Total: ${calculateTotal()}',
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Total: ${calculateTotal()}',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            ElevatedButton.icon(
+              onPressed: () {
+                showPurchaseDialog(context);
+              },
+              icon: Icon(Icons.shopping_cart),
+              label: Text('Comprar'),
+            ),
+          ],
         ),
       ),
+    );
+  }
+
+  void showPurchaseDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Compra Exitosa'),
+          content: Text('¡Gracias por tu compra!'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Aceptar'),
+            ),
+          ],
+        );
+      },
     );
   }
 }

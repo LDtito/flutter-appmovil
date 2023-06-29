@@ -1,6 +1,8 @@
+import 'package:app/bienvenida.dart';
 import 'package:app/carrito.dart';
 import 'package:app/categorias.dart';
 import 'package:app/listProducts.dart';
+import 'package:app/listUsers.dart';
 import 'package:app/login.dart';
 import 'package:app/producto.dart';
 import 'package:app/register.dart';
@@ -25,13 +27,15 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => const Login(),
-        '/register': (context) => const Register(),
+        '/': (context) => const Bienvenida(),
+        '/login': (context) => LoginScreen(),
+        '/register': (context) => Register(),
         '/vista': (context) => const Vista(),
         '/category': (context) => const Category(),
         '/products': (context) => const Products(),
         '/listproducts': (context) => const ListProducts(),
         '/cart': (context) => const Carrito(),
+        '/users': (context) => const ListUsers(),
         '/venta': (context) => Venta(),
       },
     );

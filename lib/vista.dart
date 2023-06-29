@@ -107,6 +107,7 @@ class _VistaState extends State<Vista> {
                 ),
               ),
               ListTile(
+                leading: Icon(Icons.home),
                 title: const Text(
                   'Home',
                   style: TextStyle(
@@ -114,10 +115,11 @@ class _VistaState extends State<Vista> {
                   ),
                 ),
                 onTap: () {
-                  Navigator.pushNamed(context, '/'); // Handle item 1 click
+                  Navigator.pushNamed(context, '/vista');
                 },
               ),
               ListTile(
+                leading: Icon(Icons.category),
                 title: const Text(
                   'Categorias',
                   style: TextStyle(
@@ -125,11 +127,11 @@ class _VistaState extends State<Vista> {
                   ),
                 ),
                 onTap: () {
-                  Navigator.pushNamed(
-                      context, '/category'); // Handle item 2 click
+                  Navigator.pushNamed(context, '/category');
                 },
               ),
               ListTile(
+                leading: Icon(Icons.shopping_cart),
                 title: const Text(
                   'Productos',
                   style: TextStyle(
@@ -137,11 +139,11 @@ class _VistaState extends State<Vista> {
                   ),
                 ),
                 onTap: () {
-                  Navigator.pushNamed(
-                      context, '/products'); // Handle item 2 click
+                  Navigator.pushNamed(context, '/products');
                 },
               ),
               ListTile(
+                leading: Icon(Icons.inventory),
                 title: const Text(
                   'Inventario',
                   style: TextStyle(
@@ -149,11 +151,23 @@ class _VistaState extends State<Vista> {
                   ),
                 ),
                 onTap: () {
-                  Navigator.pushNamed(
-                      context, '/listproducts'); // Handle item 2 click
+                  Navigator.pushNamed(context, '/listproducts');
                 },
               ),
               ListTile(
+                leading: Icon(Icons.person_add),
+                title: const Text(
+                  'Usuarios',
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.pushNamed(context, '/users');
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.logout),
                 title: const Text(
                   'Cerrar Sesion',
                   style: TextStyle(
@@ -161,7 +175,7 @@ class _VistaState extends State<Vista> {
                   ),
                 ),
                 onTap: () {
-                  // Handle item 2 click
+                  Navigator.pushNamed(context, '/');
                 },
               ),
             ],
@@ -287,7 +301,7 @@ class _VistaState extends State<Vista> {
                                 onPressed: () {
                                   _addToCart(journal);
                                 },
-                                child: Text('Agregar al carrito2'),
+                                child: Text('Agregar al carrito'),
                               )
                             ],
                           ),
@@ -303,7 +317,7 @@ class _VistaState extends State<Vista> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/cart'); // Navigate to cart screen
+          Navigator.pushNamed(context, '/venta'); // Navigate to cart screen
         },
         child: Icon(Icons.shopping_cart),
         backgroundColor: const Color(0xFF3E54AC),

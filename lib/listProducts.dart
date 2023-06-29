@@ -260,6 +260,7 @@ class _ListProductsState extends State<ListProducts> {
                 ),
               ),
               ListTile(
+                leading: Icon(Icons.home),
                 title: const Text(
                   'Home',
                   style: TextStyle(
@@ -267,39 +268,35 @@ class _ListProductsState extends State<ListProducts> {
                   ),
                 ),
                 onTap: () {
-                  Navigator.pushNamed(context, '/vista'); // Handle item 1 click
+                  Navigator.pushNamed(context, '/vista');
                 },
               ),
               ListTile(
+                leading: Icon(Icons.category),
                 title: const Text(
                   'Categorias',
                   style: TextStyle(
                     color: Colors.black,
                   ),
                 ),
-                trailing: Icon(Icons.shopping_cart, color: Colors.black),
                 onTap: () {
-                  Navigator.pushNamed(
-                      context, '/category'); // Handle item 2 click
+                  Navigator.pushNamed(context, '/category');
                 },
               ),
               ListTile(
+                leading: Icon(Icons.shopping_cart),
                 title: const Text(
                   'Productos',
                   style: TextStyle(
                     color: Colors.black,
                   ),
                 ),
-                trailing: Icon(Icons.shopping_cart,
-                    color: Colors.black), // Icono agregado en el lado derecho
                 onTap: () {
-                  Navigator.pushNamed(
-                    context,
-                    '/products',
-                  ); // Maneja el clic en el elemento 2
+                  Navigator.pushNamed(context, '/products');
                 },
               ),
               ListTile(
+                leading: Icon(Icons.inventory),
                 title: const Text(
                   'Inventario',
                   style: TextStyle(
@@ -307,11 +304,23 @@ class _ListProductsState extends State<ListProducts> {
                   ),
                 ),
                 onTap: () {
-                  Navigator.pushNamed(
-                      context, '/listproducts'); // Handle item 2 click
+                  Navigator.pushNamed(context, '/listproducts');
                 },
               ),
               ListTile(
+                leading: Icon(Icons.inventory),
+                title: const Text(
+                  'Usuarios',
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.pushNamed(context, '/users');
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.logout),
                 title: const Text(
                   'Cerrar Sesion',
                   style: TextStyle(
@@ -319,7 +328,7 @@ class _ListProductsState extends State<ListProducts> {
                   ),
                 ),
                 onTap: () {
-                  Navigator.pushNamed(context, '/'); // Handle item 2 click
+                  Navigator.pushNamed(context, '/');
                 },
               ),
             ],

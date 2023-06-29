@@ -13,12 +13,25 @@ class SQLHelper {
       """);
   }
 
+  static Future<void> createUsersTable(sql.Database database) async {
+    await database.execute("""CREATE TABLE users(
+      id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+      name TEXT,
+      email TEXT,
+      identification TEXT,
+      image TEXT,
+      createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+    )
+    """);
+  }
+
   static Future<sql.Database> db() async {
     return sql.openDatabase(
-      'ferreteria.db',
+      'ferreteriaV2.db',
       version: 1,
       onCreate: (sql.Database database, int version) async {
         await createTables(database);
+        await createUsersTable(database);
       },
     );
   }
@@ -70,6 +83,62 @@ class SQLHelper {
       await db.delete("items", where: "id = ?", whereArgs: [id]);
     } catch (err) {
       debugPrint("Something went wrong when deleting an item: $err");
+    }
+  }
+
+  // Create a new user
+  static Future<int> createUser(
+      String name, String email, String identification, String image) async {
+    final db = await SQLHelper.db();
+
+    final data = {
+      'name': name,
+      'email': email,
+      'identification': identification,
+      'image': image
+    };
+    final id = await db.insert('users', data,
+        conflictAlgorithm: sql.ConflictAlgorithm.replace);
+    return id;
+  }
+
+  // Read all users
+  static Future<List<Map<String, dynamic>>> getUsers() async {
+    final db = await SQLHelper.db();
+    return db.query('users', orderBy: "id");
+  }
+
+  // Read a single user by id
+  static Future<List<Map<String, dynamic>>> getUser(int id) async {
+    final db = await SQLHelper.db();
+    return db.query('users', where: "id = ?", whereArgs: [id], limit: 1);
+  }
+
+  // Update a user by id
+  static Future<int> updateUser(int id, String name, String email,
+      String identification, String image) async {
+    final db = await SQLHelper.db();
+
+    final data = {
+      'name': name,
+      'email': email,
+      'identification': identification,
+      'image': image,
+      'createdAt': DateTime.now().toString()
+    };
+
+    final result =
+        await db.update('users', data, where: "id = ?", whereArgs: [id]);
+    return result;
+  }
+
+  // Delete a user by id
+  static Future<void> deleteUser(int id) async {
+    final db = await SQLHelper.db();
+    try {
+      await db.delete("users", where: "id = ?", whereArgs: [id]);
+    } catch (err) {
+      debugPrint("Something went wrong when deleting a user: $err");
     }
   }
 }

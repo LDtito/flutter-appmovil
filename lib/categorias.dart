@@ -62,6 +62,7 @@ class _CategoryState extends State<Category> {
                 ),
               ),
               ListTile(
+                leading: Icon(Icons.home),
                 title: const Text(
                   'Home',
                   style: TextStyle(
@@ -69,10 +70,11 @@ class _CategoryState extends State<Category> {
                   ),
                 ),
                 onTap: () {
-                  Navigator.pushNamed(context, '/'); // Handle item 1 click
+                  Navigator.pushNamed(context, '/vista');
                 },
               ),
               ListTile(
+                leading: Icon(Icons.category),
                 title: const Text(
                   'Categorias',
                   style: TextStyle(
@@ -80,11 +82,11 @@ class _CategoryState extends State<Category> {
                   ),
                 ),
                 onTap: () {
-                  Navigator.pushNamed(
-                      context, '/category'); // Handle item 2 click
+                  Navigator.pushNamed(context, '/category');
                 },
               ),
               ListTile(
+                leading: Icon(Icons.shopping_cart),
                 title: const Text(
                   'Productos',
                   style: TextStyle(
@@ -92,11 +94,11 @@ class _CategoryState extends State<Category> {
                   ),
                 ),
                 onTap: () {
-                  Navigator.pushNamed(
-                      context, '/products'); // Handle item 2 click
+                  Navigator.pushNamed(context, '/products');
                 },
               ),
               ListTile(
+                leading: Icon(Icons.inventory),
                 title: const Text(
                   'Inventario',
                   style: TextStyle(
@@ -104,11 +106,23 @@ class _CategoryState extends State<Category> {
                   ),
                 ),
                 onTap: () {
-                  Navigator.pushNamed(
-                      context, '/listproducts'); // Handle item 2 click
+                  Navigator.pushNamed(context, '/listproducts');
                 },
               ),
               ListTile(
+                leading: Icon(Icons.person_add),
+                title: const Text(
+                  'Usuarios',
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.pushNamed(context, '/users');
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.logout),
                 title: const Text(
                   'Cerrar Sesion',
                   style: TextStyle(
@@ -116,7 +130,7 @@ class _CategoryState extends State<Category> {
                   ),
                 ),
                 onTap: () {
-                  // Handle item 2 click
+                  Navigator.pushNamed(context, '/');
                 },
               ),
             ],
@@ -125,10 +139,10 @@ class _CategoryState extends State<Category> {
       ),
       body: Container(
         padding: EdgeInsets.fromLTRB(
-          34 * fem,
-          30 * fem,
-          41.5 * fem,
-          50 * fem,
+          10 * fem,
+          20 * fem,
+          20 * fem,
+          40 * fem,
         ),
         width: double.infinity,
         child: Column(
@@ -139,7 +153,7 @@ class _CategoryState extends State<Category> {
                 0 * fem,
                 0 * fem,
                 0 * fem,
-                22.25 * fem,
+                15 * fem,
               ),
               width: double.infinity,
               child: Row(
@@ -149,7 +163,7 @@ class _CategoryState extends State<Category> {
                     margin: EdgeInsets.fromLTRB(
                       0 * fem,
                       0 * fem,
-                      220.5 * fem,
+                      200 * fem,
                       2.75 * fem,
                     ),
                     child: Text(
@@ -184,8 +198,8 @@ class _CategoryState extends State<Category> {
             Expanded(
               child: GridView.count(
                 crossAxisCount: 2,
-                mainAxisSpacing: 20 * fem,
-                crossAxisSpacing: 20 * fem,
+                mainAxisSpacing: 10 * fem,
+                crossAxisSpacing: 10 * fem,
                 childAspectRatio: 1 / 1.2,
                 children: [
                   Container(
@@ -198,7 +212,7 @@ class _CategoryState extends State<Category> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          height: 100 * fem,
+                          height: 50 * fem,
                           width: double.infinity,
                           decoration: BoxDecoration(
                             image: DecorationImage(
@@ -241,7 +255,7 @@ class _CategoryState extends State<Category> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          height: 100 * fem,
+                          height: 50 * fem,
                           width: 60,
                           decoration: BoxDecoration(
                             image: DecorationImage(
@@ -284,7 +298,7 @@ class _CategoryState extends State<Category> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          height: 100 * fem,
+                          height: 50 * fem,
                           width: double.infinity,
                           decoration: BoxDecoration(
                             image: DecorationImage(
@@ -318,7 +332,7 @@ class _CategoryState extends State<Category> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.all(20 * fem),
+                    padding: EdgeInsets.all(10 * fem),
                     decoration: BoxDecoration(
                       color: Color(0xfff6f7f9),
                       borderRadius: BorderRadius.circular(15 * fem),
@@ -327,7 +341,7 @@ class _CategoryState extends State<Category> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          height: 100 * fem,
+                          height: 50 * fem,
                           width: double.infinity,
                           decoration: BoxDecoration(
                             image: DecorationImage(
