@@ -10,30 +10,21 @@ class Vista extends StatefulWidget {
 }
 
 class _VistaState extends State<Vista> {
-  List<Map<String, dynamic>> _createdJournals = [];
   List<Map<String, dynamic>> _journals = [];
   List<Map<String, dynamic>> _filteredJournals = [];
 
-  void _loadCreatedJournals() async {
-    final items = await SQLHelper.getItems();
-
+  // This function is used to fetch all data from the database
+  void _refreshJournals() async {
+    final data = await SQLHelper.getItems();
     setState(() {
-      _createdJournals =
-          items.where((item) => item['createdAt'] != null).toList();
+      _journals = data;
+      _filteredJournals = List.from(data);
     });
   }
 
-  @override
-  void initState() {
-    super.initState();
-    _loadCreatedJournals();
-  }
-
-  final TextEditingController _searchController = TextEditingController();
-
   void _addToCart(Map<String, dynamic> product) {
     setState(() {
-      _createdJournals.remove(product);
+      _journals.remove(product);
     });
     Carrito.cartItems.add(product);
     Navigator.push(
@@ -49,6 +40,12 @@ class _VistaState extends State<Vista> {
               journal['title'].toLowerCase().contains(searchTerm.toLowerCase()))
           .toList();
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _refreshJournals();
   }
 
   @override
@@ -70,7 +67,6 @@ class _VistaState extends State<Vista> {
             padding:
                 const EdgeInsets.only(bottom: 16.0, left: 16.0, right: 16.0),
             child: TextField(
-              controller: _searchController,
               onChanged: _searchJournals,
               decoration: InputDecoration(
                 hintText: 'Buscar productos',
@@ -178,6 +174,19 @@ class _VistaState extends State<Vista> {
                   Navigator.pushNamed(context, '/');
                 },
               ),
+              ListTile(
+                leading: Icon(Icons.logout),
+                title: const Text(
+                  'Ayuda',
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.pushNamed(context, '/ayuda');
+                },
+              ),
+              
             ],
           ),
         ),
@@ -189,14 +198,27 @@ class _VistaState extends State<Vista> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 2 * fem, 31 * fem),
-              width: 329 * fem,
-              height: 135 * fem,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20 * fem),
+              height: 150,
+              width: 500,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.3),
+                    spreadRadius: 1 * fem,
+                    blurRadius: 5 * fem,
+                    offset: Offset(0, 3 * fem),
+                  ),
+                ],
+              ),
+              margin: EdgeInsets.symmetric(horizontal: 100),
+              child: Center(
                 child: Image.asset(
                   'images/rectangle-46.png',
-                  fit: BoxFit.cover,
+                  width: 700,
+                  height: 200,
+                  fit: BoxFit.fitWidth,
                 ),
               ),
             ),
@@ -234,9 +256,9 @@ class _VistaState extends State<Vista> {
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: _createdJournals.length,
+                itemCount: _filteredJournals.length,
                 itemBuilder: (context, index) {
-                  final journal = _createdJournals[index];
+                  final journal = _filteredJournals[index];
                   return GestureDetector(
                     onTap: () {
                       // Navigate to product details screen

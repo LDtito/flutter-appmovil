@@ -1,3 +1,4 @@
+import 'package:app/escaleras.dart';
 import 'package:flutter/material.dart';
 
 class Category extends StatefulWidget {
@@ -202,176 +203,208 @@ class _CategoryState extends State<Category> {
                 crossAxisSpacing: 10 * fem,
                 childAspectRatio: 1 / 1.2,
                 children: [
-                  Container(
-                    padding: EdgeInsets.all(20 * fem),
-                    decoration: BoxDecoration(
-                      color: Color(0xfff6f7f9),
-                      borderRadius: BorderRadius.circular(15 * fem),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: 50 * fem,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('images/screwdriver.png'),
-                              fit: BoxFit.cover,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Escaleras()),
+                      );
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(20 * fem),
+                      decoration: BoxDecoration(
+                        color: Color(0xfff6f7f9),
+                        borderRadius: BorderRadius.circular(15 * fem),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            height: 100 * fem,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage('images/vector-amS.png'),
+                                fit: BoxFit.fitHeight,
+                              ),
+                              borderRadius: BorderRadius.circular(10 * fem),
                             ),
-                            borderRadius: BorderRadius.circular(10 * fem),
                           ),
-                        ),
-                        SizedBox(height: 15 * fem),
-                        Text(
-                          'Herramientas',
-                          style: TextStyle(
-                            fontFamily: 'Mulish',
-                            fontSize: 16 * fem,
-                            fontWeight: FontWeight.w700,
-                            color: Color(0xff3e54ac),
+                          SizedBox(height: 15 * fem),
+                          Text(
+                            'Herramientas',
+                            style: TextStyle(
+                              fontFamily: 'Mulish',
+                              fontSize: 16 * fem,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xff3e54ac),
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 5 * fem),
-                        Text(
-                          'Encuentra una amplia variedad de herramientas para tus proyectos.',
-                          style: TextStyle(
-                            fontFamily: 'Mulish',
-                            fontSize: 12 * fem,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xff7f7f7f),
+                          SizedBox(height: 5 * fem),
+                          Text(
+                            'Encuentra una amplia variedad de herramientas para tus proyectos.',
+                            style: TextStyle(
+                              fontFamily: 'Mulish',
+                              fontSize: 12 * fem,
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xff7f7f7f),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                  Container(
-                    padding: EdgeInsets.all(20 * fem),
-                    decoration: BoxDecoration(
-                      color: Color(0xfff6f7f9),
-                      borderRadius: BorderRadius.circular(15 * fem),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: 50 * fem,
-                          width: 60,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('images/vector-A6Q.png'),
-                              fit: BoxFit.cover,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Escaleras()),
+                      );
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(20 * fem),
+                      decoration: BoxDecoration(
+                        color: Color(0xfff6f7f9),
+                        borderRadius: BorderRadius.circular(15 * fem),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            height: 100 * fem,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage('images/screwdriver.png'),
+                                fit: BoxFit.fitHeight,
+                              ),
+                              borderRadius: BorderRadius.circular(10 * fem),
                             ),
-                            borderRadius: BorderRadius.circular(10 * fem),
                           ),
-                        ),
-                        SizedBox(height: 15 * fem),
-                        Text(
-                          'Escaleras',
-                          style: TextStyle(
-                            fontFamily: 'Mulish',
-                            fontSize: 16 * fem,
-                            fontWeight: FontWeight.w700,
-                            color: Color(0xff3e54ac),
+                          SizedBox(height: 15 * fem),
+                          Text(
+                            'Herramientas',
+                            style: TextStyle(
+                              fontFamily: 'Mulish',
+                              fontSize: 16 * fem,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xff3e54ac),
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 5 * fem),
-                        Text(
-                          'Encuentra una gran variedad de pinturas para tu hogar.',
-                          style: TextStyle(
-                            fontFamily: 'Mulish',
-                            fontSize: 12 * fem,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xff7f7f7f),
+                          SizedBox(height: 5 * fem),
+                          Text(
+                            'Encuentra una amplia variedad de herramientas para tus proyectos.',
+                            style: TextStyle(
+                              fontFamily: 'Mulish',
+                              fontSize: 12 * fem,
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xff7f7f7f),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                  Container(
-                    padding: EdgeInsets.all(20 * fem),
-                    decoration: BoxDecoration(
-                      color: Color(0xfff6f7f9),
-                      borderRadius: BorderRadius.circular(15 * fem),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: 50 * fem,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('images/vector-amS.png'),
-                              fit: BoxFit.cover,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Escaleras()),
+                      );
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(20 * fem),
+                      decoration: BoxDecoration(
+                        color: Color(0xfff6f7f9),
+                        borderRadius: BorderRadius.circular(15 * fem),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            height: 100 * fem,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage('images/vector-A6Q.png'),
+                                fit: BoxFit.fitHeight,
+                              ),
+                              borderRadius: BorderRadius.circular(10 * fem),
                             ),
-                            borderRadius: BorderRadius.circular(10 * fem),
                           ),
-                        ),
-                        SizedBox(height: 15 * fem),
-                        Text(
-                          'Martillos',
-                          style: TextStyle(
-                            fontFamily: 'Mulish',
-                            fontSize: 16 * fem,
-                            fontWeight: FontWeight.w700,
-                            color: Color(0xff3e54ac),
+                          SizedBox(height: 15 * fem),
+                          Text(
+                            'Herramientas',
+                            style: TextStyle(
+                              fontFamily: 'Mulish',
+                              fontSize: 16 * fem,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xff3e54ac),
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 5 * fem),
-                        Text(
-                          'Encuentra una gran variedad de pinturas para tu hogar.',
-                          style: TextStyle(
-                            fontFamily: 'Mulish',
-                            fontSize: 12 * fem,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xff7f7f7f),
+                          SizedBox(height: 5 * fem),
+                          Text(
+                            'Encuentra una amplia variedad de herramientas para tus proyectos.',
+                            style: TextStyle(
+                              fontFamily: 'Mulish',
+                              fontSize: 12 * fem,
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xff7f7f7f),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                  Container(
-                    padding: EdgeInsets.all(10 * fem),
-                    decoration: BoxDecoration(
-                      color: Color(0xfff6f7f9),
-                      borderRadius: BorderRadius.circular(15 * fem),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: 50 * fem,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('images/vector-amS.png'),
-                              fit: BoxFit.cover,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Escaleras()),
+                      );
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(20 * fem),
+                      decoration: BoxDecoration(
+                        color: Color(0xfff6f7f9),
+                        borderRadius: BorderRadius.circular(15 * fem),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            height: 100 * fem,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage('images/screwdriver.png'),
+                                fit: BoxFit.fitHeight,
+                              ),
+                              borderRadius: BorderRadius.circular(10 * fem),
                             ),
-                            borderRadius: BorderRadius.circular(10 * fem),
                           ),
-                        ),
-                        SizedBox(height: 15 * fem),
-                        Text(
-                          'Pinturas',
-                          style: TextStyle(
-                            fontFamily: 'Mulish',
-                            fontSize: 16 * fem,
-                            fontWeight: FontWeight.w700,
-                            color: Color(0xff3e54ac),
+                          SizedBox(height: 15 * fem),
+                          Text(
+                            'Herramientas',
+                            style: TextStyle(
+                              fontFamily: 'Mulish',
+                              fontSize: 16 * fem,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xff3e54ac),
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 5 * fem),
-                        Text(
-                          'Encuentra una gran variedad de pinturas para tu hogar.',
-                          style: TextStyle(
-                            fontFamily: 'Mulish',
-                            fontSize: 12 * fem,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xff7f7f7f),
+                          SizedBox(height: 5 * fem),
+                          Text(
+                            'Encuentra una amplia variedad de herramientas para tus proyectos.',
+                            style: TextStyle(
+                              fontFamily: 'Mulish',
+                              fontSize: 12 * fem,
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xff7f7f7f),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ],

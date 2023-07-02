@@ -213,46 +213,241 @@ class _ListUsersState extends State<ListUsers> {
     return Scaffold(
       appBar: AppBar(
         title: Text('User List'),
+        backgroundColor: const Color(0xFF3E54AC),
+        toolbarHeight: 50,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(20),
+          ),
+        ),
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(100),
+          child: Padding(
+            padding:
+                const EdgeInsets.only(bottom: 16.0, left: 16.0, right: 16.0),
+            child: TextField(
+              controller: _searchController,
+              onChanged: _searchUsers,
+              decoration: InputDecoration(
+                hintText: 'Buscar usuarios',
+                filled: true,
+                fillColor: Colors.white,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                suffixIcon: Icon(
+                  Icons.search,
+                  color: const Color(0xFF3E54AC),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+      drawer: Drawer(
+        child: Container(
+          color: Colors.white,
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              const DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Color(0xFF3E54AC),
+                ),
+                child: Text(
+                  'Ferreteria',
+                  style: TextStyle(
+                    fontSize: 24,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: Icon(Icons.home),
+                title: const Text(
+                  'Home',
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.pushNamed(context, '/vista');
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.category),
+                title: const Text(
+                  'Categorias',
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.pushNamed(context, '/category');
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.shopping_cart),
+                title: const Text(
+                  'Productos',
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.pushNamed(context, '/products');
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.inventory),
+                title: const Text(
+                  'Inventario',
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.pushNamed(context, '/listproducts');
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.inventory),
+                title: const Text(
+                  'Usuarios',
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.pushNamed(context, '/users');
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.logout),
+                title: const Text(
+                  'Cerrar Sesion',
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.pushNamed(context, '/');
+                },
+              ),
+            ],
+          ),
+        ),
       ),
       body: _isLoading
           ? const Center(
               child: CircularProgressIndicator(),
             )
           : Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 8.0,
-              ),
+              padding: const EdgeInsets.only(top: 150.0),
               child: ListView.builder(
-                padding: const EdgeInsets.all(10),
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
                 itemCount: _filteredUsers.length,
                 itemBuilder: (context, index) => Card(
                   color: Colors.white,
-                  margin: const EdgeInsets.symmetric(
-                    vertical: 5.0,
-                  ),
+                  margin: const EdgeInsets.all(10),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
                   elevation: 5,
                   child: ListTile(
-                    leading: Icon(Icons.person),
-                    title: Text(_filteredUsers[index]['name']),
-                    subtitle: Text(_filteredUsers[index]['email']),
-                    trailing: IconButton(
-                      icon: Icon(Icons.delete),
-                      onPressed: () => _showDeleteConfirmation(
-                        _filteredUsers[index]['id'],
+                    leading: ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Image.network(
+                        'https://th.bing.com/th?id=OIP.qITy5UI-WFPC6T2wWRiBRgHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2',
+                        fit: BoxFit.cover,
+                        width: 70,
+                        height: 80,
                       ),
                     ),
-                    onTap: () => _showForm(_filteredUsers[index]['id']),
+                    title: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 8),
+                        Text(
+                          _filteredUsers[index]['name'],
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: const Color(0xFF3E54AC),
+                          ),
+                        ),
+                      ],
+                    ),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 10),
+                        Text(
+                          _filteredUsers[index]['email'],
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: const Color(0xFF3E54AC),
+                          ),
+                        ),
+                      ],
+                    ),
+                    trailing: SizedBox(
+                      width: 100,
+                      child: Row(
+                        children: [
+                          IconButton(
+                            icon: const Icon(
+                              Icons.edit,
+                              color: const Color(0xFF3E54AC),
+                            ),
+                            onPressed: () =>
+                                _showForm(_filteredUsers[index]['id']),
+                          ),
+                          IconButton(
+                            icon: const Icon(
+                              Icons.delete,
+                              color: const Color(0xFF3E54AC),
+                            ),
+                            onPressed: () => _showDeleteConfirmation(
+                                _filteredUsers[index]['id']),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ),
             ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => _showForm(null),
-        child: Icon(Icons.add),
+      floatingActionButton: Padding(
+        padding: EdgeInsets.only(top: 170.0),
+        child: SizedBox(
+          height: 130,
+          width: 400,
+          child: FloatingActionButton(
+            onPressed: () => _showForm(null),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(
+                  Icons.person_add,
+                  color: const Color(0xFF3E54AC),
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  'Agregar usuarios',
+                  style:
+                      TextStyle(fontSize: 16, color: const Color(0xFF3E54AC)),
+                ),
+              ],
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            backgroundColor: Colors.white,
+            elevation: 4,
+          ),
+        ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerTop,
     );
   }
 }

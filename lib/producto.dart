@@ -11,20 +11,6 @@ class Products extends StatefulWidget {
 }
 
 class _ProductsState extends State<Products> {
-  List<Map<String, dynamic>> _journals = [];
-  List<Map<String, dynamic>> _filteredJournals = [];
-
-  final TextEditingController _searchController = TextEditingController();
-
-  void _searchJournals(String searchTerm) {
-    setState(() {
-      _filteredJournals = _journals
-          .where((journal) =>
-              journal['title'].toLowerCase().contains(searchTerm.toLowerCase()))
-          .toList();
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     double baseWidth = 393;
@@ -34,29 +20,6 @@ class _ProductsState extends State<Products> {
         title: const Text('Product List'),
         backgroundColor: const Color(0xFF3E54AC),
         toolbarHeight: 100,
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(100),
-          child: Padding(
-            padding:
-                const EdgeInsets.only(bottom: 16.0, left: 16.0, right: 16.0),
-            child: TextField(
-              controller: _searchController,
-              onChanged: _searchJournals,
-              decoration: InputDecoration(
-                hintText: 'Buscar productos',
-                filled: true,
-                fillColor: Colors.white,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                suffixIcon: Icon(
-                  Icons.search,
-                  color: const Color(0xFF3E54AC),
-                ),
-              ),
-            ),
-          ),
-        ),
       ),
       drawer: Drawer(
         child: Container(
@@ -155,7 +118,7 @@ class _ProductsState extends State<Products> {
       body: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          color: Color(0xffecf2ff),
+          color: Colors.white,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -256,15 +219,11 @@ class _ProductsState extends State<Products> {
                     top: 350 * fem,
                     child: Align(
                       child: SizedBox(
-                        width: 393 * fem,
-                        height: 360 * fem,
+                        width: 370 * fem,
+                        height: 460 * fem,
                         child: Container(
                           decoration: BoxDecoration(
                             color: Colors.white,
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(40 * fem),
-                              topRight: Radius.circular(40 * fem),
-                            ),
                             boxShadow: [
                               BoxShadow(
                                 color: Color(0x3f000000),
@@ -289,7 +248,7 @@ class _ProductsState extends State<Products> {
                                   ),
                                   SizedBox(height: 20 * fem),
                                   Text(
-                                    'Descripción del producto',
+                                    'Herramienta de percusión utilizada para golpear directamente o indirectamente una pieza, causando su desplazamiento. ',
                                     style: TextStyle(
                                       fontSize: 16 * fem,
                                       color: Color(0xff0d1f3c),

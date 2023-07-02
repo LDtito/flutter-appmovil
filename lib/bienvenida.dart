@@ -46,7 +46,7 @@ class _BienvenidaState extends State<Bienvenida> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 30),
               child: Text(
-                'Welcome',
+                'Bienvenido',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 32,
@@ -73,7 +73,7 @@ class _BienvenidaState extends State<Bienvenida> {
                   ),
                 ),
                 child: Text(
-                  'Login',
+                  'Iniciar sesión',
                   style: TextStyle(
                     fontSize: 18,
                   ),
@@ -95,7 +95,7 @@ class _BienvenidaState extends State<Bienvenida> {
                 ),
               ),
               child: Text(
-                'Register',
+                'Registrarse',
                 style: TextStyle(
                   fontSize: 18,
                 ),

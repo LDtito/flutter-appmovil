@@ -1,6 +1,8 @@
+import 'package:app/ayuda.dart';
 import 'package:app/bienvenida.dart';
 import 'package:app/carrito.dart';
 import 'package:app/categorias.dart';
+import 'package:app/escaleras.dart';
 import 'package:app/listProducts.dart';
 import 'package:app/listUsers.dart';
 import 'package:app/login.dart';
@@ -37,6 +39,8 @@ class MyApp extends StatelessWidget {
         '/cart': (context) => const Carrito(),
         '/users': (context) => const ListUsers(),
         '/venta': (context) => Venta(),
+        '/escalera': (context) => const Escaleras(),
+        '/ayuda': (context) => const Ayuda(),
       },
     );
   }
